@@ -1,0 +1,77 @@
+.filter {
+  display: flex;
+  align-items: center;
+}
+
+.filter__checkbox {
+  background-image: url(../../images/smalltumb.svg);
+  width: 36px;
+  height: 30px;
+  margin: 0 14px 0 29px;
+  padding: 0;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-color: transparent;
+  background-color: transparent;
+  overflow: visible;
+}
+
+.filter__checkbox:hover {
+  cursor: pointer;
+}
+
+.filter__checkbox_active {
+  background-image: url(../../images/smalltumboff.svg);
+  width: 36px;
+  height: 30px;
+  margin: 0 14px 0 29px;
+  padding: 0;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-color: transparent;
+  background-color: transparent;
+  overflow: visible;
+}
+
+.filter__checkbox_active:hover {
+  cursor: pointer;
+}
+
+.filter__name {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  margin-right: 30px;
+  margin-bottom: 18px;
+}
+
+@media screen and (max-width: 780px) {
+  .filter {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 30px;
+    justify-content: center;
+    margin-top: 45px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .filter {
+    padding-top: 46px;
+  }
+  .filter__name {
+    margin: 0;
+    padding: 0;
+  }
+  .filter__checkbox {
+    margin-left: 0;
+  }
+  .filter__checkbox_active {
+    margin-left: 0;
+  }
+}

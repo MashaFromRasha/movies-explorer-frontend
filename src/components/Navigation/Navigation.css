@@ -1,0 +1,222 @@
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .navigation__list {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0 0 0 44px;
+    padding: 0;
+  }
+  
+  .navigation__list_logged {
+    width: 100%;
+    max-width: 470px;
+  }
+  
+  .navigation__item {
+    flex: 1;
+    text-align: end;
+  }
+  
+  .navigation__link {
+    color: black;
+    text-align: right;
+    text-decoration: none;
+    font-family: Inter;
+    transition: opacity 0.3s ease;
+  }
+
+  .navigation__link:nth-last-child() {
+    margin-right: 15px;
+  }
+  
+  .navigation__link:hover {
+    opacity: 0.7;
+  }
+
+  .navigation__link_register {
+    color: #000;
+    font-weight: 500;
+    margin-right: 15px;
+  }
+  
+  .navigation__profile {
+    padding: 9px 20px 9px 35px;
+    border-radius: 50px;
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid rgba(170, 170, 170, 0.2);;
+  }
+  
+  .navigation__login {
+    background-color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    padding: 8px 20px;
+    border-radius: 3px;
+    margin: 0;
+  }
+  
+  .navigation__burger {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    gap: 7px;
+  }
+
+  .navigation__burger:hover {
+    cursor: pointer;
+  }
+  
+  .navigation__burger-line {
+    background-color: #000;
+    width: 28px;
+    height: 3px;
+  }
+  
+  .navigation__burger-close {
+    display: none;
+    align-self: end;
+    background-color: transparent;
+    background-image: url(../../images/close.svg);
+    background-size: 100%;
+    border: none;
+    padding: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.6s;
+    box-sizing: border-box;
+  }
+  
+  .navigation__burger-close:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+  
+  .navigation__item-main {
+    display: none;
+  }
+
+  .navigation__image {
+    width: 12px;
+    height: 14px;
+    background-image: url(../../images/account2.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+  }
+
+  @media screen and (max-width: 1180px) {
+    .navigation__list {
+      padding-right: 30px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+  
+    .navigation__burger {
+      display: flex;
+      padding-right: 14px;
+    }
+  
+    .navigation__item-main {
+      display: block;
+    }
+  
+    .navigation_logged {
+      display: none;
+      justify-content: flex-start;
+      flex-direction: column;
+      position: fixed;
+      padding: 30px;
+      background-color: #fff;
+      box-sizing: border-box;
+      z-index: 1;
+      gap: 28px;
+      content: '';
+      top: 0;
+      right: 0;
+      width: 520px;
+      height: 100vh;
+    }
+  
+    .navigation_logged_active {
+      display: flex;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+    }
+  
+    .navigation_logged:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      transform: translateX(-520px);
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  
+    .navigation__list_logged {
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      padding-top: 100px;
+    }
+  
+    .navigation_logged_active > .navigation__burger-close {
+      display: block;
+    }
+  
+    .navigation__list_logged > .navigation__item:last-child {
+      margin-top: 50%;
+    }
+  
+    .navigation__item_select {
+      border-bottom: 2px solid #000;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .navigation_logged {
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .navigation__list {
+      padding-right: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .navigation__list {
+      padding: 0;
+      margin-right: 14px;
+    }
+
+    .navigation_logged {
+      position: fixed;
+      flex-direction: column;
+      justify-content: flex-start;
+      background-color: #FFFFFF;
+      box-sizing: border-box;
+      z-index: 1;
+      gap: 28px;
+      content: '';
+      top: 0;
+      right: 0;
+      max-width: 480px;
+      width: 100%;
+      height: 100vh;
+    }
+  }
