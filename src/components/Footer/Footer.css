@@ -56,13 +56,13 @@
     opacity: .7;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1140px) {
     .footer {
       max-width: 708px;  
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
     .footer {
         max-width: 300px;  
     }

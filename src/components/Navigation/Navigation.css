@@ -11,6 +11,7 @@
     list-style-type: none;
     margin: 0 0 0 44px;
     padding: 0;
+    padding-right: 40px;
   }
   
   .navigation__list_logged {
@@ -114,11 +115,6 @@
     background-position: left;
   }
 
-  @media screen and (max-width: 1180px) {
-    .navigation__list {
-      padding-right: 30px;
-    }
-  }
   
   @media screen and (max-width: 768px) {
   
@@ -192,13 +188,13 @@
     }
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 768px) {
     .navigation__list {
-      padding-right: 14px;
+      padding-right: 20px;
     }
   }
   
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 360px) {
     .navigation__list {
       padding: 0;
       margin-right: 14px;
