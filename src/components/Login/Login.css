@@ -69,6 +69,23 @@
   cursor: pointer;
 }
 
+.login__button_disabled {
+  width: 100%;
+  border-radius: 3px;
+  height: 45px;
+  color: #6e4e4e;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  text-align: center;
+}
+
+.login__button_disabled:hover {
+  transition: opacity 0.3s ease;
+  cursor: no-drop;
+}
+
 .login__redirect {
   display: flex;
   justify-content: center;
@@ -90,6 +107,19 @@
   text-decoration: none;
   margin-left: 6px;
   color: #000;
+}
+
+.login__error-message {
+  color: red;
+  height: 50px;
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+}
+
+.login__error-message_active {
+  color: red;
+  opacity: 1;
 }
 
 @media screen and (max-width: 430px) {
