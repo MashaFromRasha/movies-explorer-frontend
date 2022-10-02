@@ -103,8 +103,7 @@ function Movies() {
 
   useEffect(() => {
     filterMovies();
-  }, [
-    moviesState.moviesCheckbox,
+  }, [moviesState.moviesCheckbox,
     moviesState.list.length,
     moviesState.savedMovies.length,
   ]);
