@@ -23,4 +23,4 @@
 
 API - https://api.movie.murochkina.nomoredomains.xyz
 
-Ссылка: https://github.com/MashaFromRasha/movies-explorer-frontend/pull/2
+Ссылка: https://github.com/MashaFromRasha/movies-explorer-frontend/pull/3

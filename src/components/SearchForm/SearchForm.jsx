@@ -1,6 +1,5 @@
 import React from "react";
 import FilterCheckbox from "../FilterCheckBox/FilterCheckBox";
-import searchImg from "../../images/search.svg";
 
 function SearchForm({
   onChange,
@@ -13,7 +12,6 @@ function SearchForm({
     <section className="search-form">
       <div className="search-form__info">
         <form className="search-form__form" onSubmit={onSubmit}>
-          <img className="search-form__img" src={searchImg} alt="поиск" />
           <input
             type="text"
             placeholder="Фильм"
@@ -22,7 +20,7 @@ function SearchForm({
             className="search-form__input"
             required
           ></input>
-          <button className="search-form__button" type="submit"></button>
+          <button className="search-form__button" type="submit">Найти</button>
         </form>
         <FilterCheckbox toggleCheckbox={toggleCheckbox} checkbox={checkbox} />
       </div>
