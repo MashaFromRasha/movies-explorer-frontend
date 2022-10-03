@@ -5,7 +5,7 @@ import Header from "../Header/Header.jsx";
 import mainApi from "../../utils/MainApi.js";
 import { checkValidation } from "../../utils/validationConfig.js";
 import { errorMessages } from "../../utils/config.js";
-import { defaultMovieState, MovieContext } from "../../contexts/movie-context";
+import { defaultMovieState, MovieContext } from "../../contexts/movie-context.js";
 import {
   CurrentUserContext,
   defaultUserState,

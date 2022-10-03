@@ -8,8 +8,8 @@ import mainApi from "../../utils/MainApi.js";
 import { checkValidation } from "../../utils/validationConfig.js";
 import { errorMessages } from "../../utils/config.js";
 import Input from "../Input/Input.jsx";
-import InfoToolTip from "../InfoTooltip/InfoTooltip";
-import { InfoToolTipContext } from "../../contexts/infotooltip-context";
+import InfoToolTip from "../InfoToolTip/InfoToolTip.jsx";
+import { InfoToolTipContext } from "../../contexts/infotooltip-context.js";
 
 function Register() {
   const { userState, setUserState } = useContext(CurrentUserContext);

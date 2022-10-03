@@ -10,7 +10,7 @@ import { errorMessages } from "../../utils/config.js";
 import mainApi from "../../utils/MainApi.js";
 import { checkValidation } from "../../utils/validationConfig.js";
 import Input from "../Input/Input.jsx";
-import InfoToolTip from "../InfoTooltip/InfoTooltip";
+import InfoToolTip from "../InfoToolTip/InfoToolTip.jsx";
 
 function Login() {
   const { userState, setUserState } = useContext(CurrentUserContext);
