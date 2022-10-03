@@ -8,4 +8,4 @@ export const defaultValidationState = {
   login: { errors: { email: "", password: "" } },
 };
 
-export const Validation = createContext(null);
+export const ValidationContext = createContext(null);

@@ -1,4 +1,4 @@
-import React from "react";
+import { createContext } from "react";
 
 export const defaultUserState = {
   _id: "",
@@ -7,4 +7,4 @@ export const defaultUserState = {
   loggedIn: false,
 };
 
-export const CurrentUserContext = React.createContext(null);
+export const CurrentUserContext = createContext(null);

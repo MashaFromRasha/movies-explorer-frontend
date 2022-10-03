@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useEffect } from "react";
 import { Route } from "react-router-dom";
 import { mainApiUrl } from "../../utils/config.js";
-import { MovieContext } from "../../context/MovieContext.js";
+import { MovieContext } from '../../contexts/movie-context';
 
 function MoviesCard({ movie, handleClickLike }) {
   const { moviesState } = useContext(MovieContext);

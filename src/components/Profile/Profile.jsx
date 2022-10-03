@@ -5,17 +5,17 @@ import Header from "../Header/Header.jsx";
 import mainApi from "../../utils/MainApi.js";
 import { checkValidation } from "../../utils/validationConfig.js";
 import { errorMessages } from "../../utils/config.js";
-import { defaultMovieState, MovieContext } from "../../context/MovieContext.js";
+import { defaultMovieState, MovieContext } from "../../contexts/movie-context";
 import {
   CurrentUserContext,
   defaultUserState,
-} from "../../context/CurrentUserContext.js";
-import { Validation } from "../../context/Validation.js";
+} from "../../contexts/user-context";
+import { ValidationContext } from "../../contexts/validation-context";
 
 function Profile() {
   const { setMoviesState } = useContext(MovieContext);
   const { userState, setUserState } = useContext(CurrentUserContext);
-  const { validationState, setValidationState } = useContext(Validation);
+  const { validationState, setValidationState } = useContext(ValidationContext);
   const history = useHistory();
   const [errorRequest, setErrorRequest] = useState("");
 

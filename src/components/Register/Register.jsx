@@ -1,21 +1,27 @@
 import React from "react";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { CurrentUserContext } from "../../context/CurrentUserContext.js";
-import { Validation } from "../../context/Validation.js";
+import { CurrentUserContext } from "../../contexts/user-context";
+import { ValidationContext } from "../../contexts/validation-context";
 import logoHeader from "../../images/logo.svg";
 import mainApi from "../../utils/MainApi.js";
 import { checkValidation } from "../../utils/validationConfig.js";
 import { errorMessages } from "../../utils/config.js";
 import Input from "../Input/Input.jsx";
+import InfoToolTip from "../InfoTooltip/InfoTooltip";
+import { InfoToolTipContext } from "../../contexts/infotooltip-context";
 
 function Register() {
   const { userState, setUserState } = useContext(CurrentUserContext);
-  const store = useContext(Validation);
+  const store = useContext(ValidationContext);
   const { validationState, setValidationState } = store;
+  const { toolTipState, setToolTipState } = useContext(InfoToolTipContext);
   const history = useHistory();
+
   const [requestMessage, setRequestMessage] = useState("");
+
   const [disabledInput, setDisabledInput] = useState(false);
+
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const includesInputError = useMemo(
@@ -32,7 +38,6 @@ function Register() {
     setValidationState(newState(validationState));
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-
   function getUser() {
     mainApi
       .getUserInfo()
@@ -43,7 +48,6 @@ function Register() {
         setUserState({ ...userState, loggedIn: false });
       });
   }
-
   function autoLogin({ email, password }) {
     mainApi
       .login({ email, password })
@@ -57,8 +61,7 @@ function Register() {
         setRequestMessage(errorMessages[status]);
       });
   }
-
-  function handleSubmitForm(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     setDisabledInput(true);
     mainApi
@@ -67,10 +70,23 @@ function Register() {
         if (user) {
           autoLogin(form);
         }
+        setToolTipState({
+          ...toolTipState,
+          isOpen: true,
+          message: "Вы успешно зарегистрировались",
+          success: true,
+        });
+        // history.push('/signin');
       })
       .catch(({ status, message }) => {
         setRequestMessage(errorMessages[status]);
         setDisabledInput(false);
+        setToolTipState({
+          ...toolTipState,
+          isOpen: true,
+          message: "При регистрации произошла ошибка",
+          success: false,
+        });
       });
   }
 
@@ -93,7 +109,7 @@ function Register() {
         ></img>
       </Link>
       <h1 className="register__title">Добро пожаловать!</h1>
-      <form className="register__form" onSubmit={handleSubmitForm}>
+      <form className="register__form" onSubmit={handleSubmit}>
         <Input
           name="name"
           type="text"
@@ -137,6 +153,7 @@ function Register() {
           Войти
         </Link>
       </div>
+      <InfoToolTip />
     </section>
   );
 }

@@ -2,18 +2,21 @@ import React from "react";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import logoHeader from "../../images/logo.svg";
-import { MovieContext } from "../../context/MovieContext.js";
-import { CurrentUserContext } from "../../context/CurrentUserContext.js";
-import { Validation } from "../../context/Validation.js";
+import { InfoToolTipContext } from "../../contexts/infotooltip-context";
+import { MovieContext } from "../../contexts/movie-context";
+import { CurrentUserContext } from "../../contexts/user-context";
+import { ValidationContext } from "../../contexts/validation-context";
 import { errorMessages } from "../../utils/config.js";
 import mainApi from "../../utils/MainApi.js";
 import { checkValidation } from "../../utils/validationConfig.js";
 import Input from "../Input/Input.jsx";
+import InfoToolTip from "../InfoTooltip/InfoTooltip";
 
 function Login() {
   const { userState, setUserState } = useContext(CurrentUserContext);
   const { moviesState, setMoviesState } = useContext(MovieContext);
-  const store = useContext(Validation);
+  const { toolTipState, setToolTipState } = useContext(InfoToolTipContext);
+  const store = useContext(ValidationContext);
   const { validationState, setValidationState } = store;
   const [requestMessage, setRequestMessage] = useState("");
 
@@ -44,12 +47,24 @@ function Login() {
       .getUserInfo()
       .then(({ _id, name, email }) => {
         setUserState({ ...userState, _id, name, email, loggedIn: true });
+        setToolTipState({
+          ...toolTipState,
+          isOpen: true,
+          message: "Вы успешно вошли",
+          success: true,
+        });
         if (moviesStorage) {
           setMoviesState(moviesStorage);
         }
       })
       .catch((err) => {
         setUserState({ ...userState, loggedIn: false });
+        setToolTipState({
+          ...toolTipState,
+          isOpen: true,
+          message: "Не удалось войти в аккаунт",
+          success: false,
+        });
       });
   }
 
@@ -137,6 +152,7 @@ function Login() {
           Регистрация
         </Link>
       </div>
+      <InfoToolTip />
     </section>
   );
 }

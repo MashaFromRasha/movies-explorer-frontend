@@ -5,8 +5,8 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import mainApi from "../../utils/MainApi.js";
-import { CurrentUserContext } from "../../context/CurrentUserContext.js";
-import { MovieContext } from "../../context/MovieContext.js";
+import { CurrentUserContext } from '../../contexts/user-context';
+import { MovieContext } from '../../contexts/movie-context';
 
 function SavedMovies() {
   const { moviesState, setMoviesState } = useContext(MovieContext);

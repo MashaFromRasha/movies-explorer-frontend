@@ -6,11 +6,13 @@ import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import mainApi from "../../utils/MainApi.js";
 import moviesApi from "../../utils/MoviesApi.js";
-import { MovieContext } from "../../context/MovieContext.js";
+import { MovieContext } from '../../contexts/movie-context';
 import { mainApiUrl } from "../../utils/config.js";
+import { InfoToolTipContext } from '../../contexts/infotooltip-context';
 
 function Movies() {
   const { moviesState, setMoviesState } = useContext(MovieContext);
+  const { toolTipState, setToolTipState } = useContext(InfoToolTipContext);
   const [request, setRequest] = useState(false);
 
   function handleChangeSearchText(e) {
@@ -22,26 +24,26 @@ function Movies() {
 
   function handleClickLike(movie) {
     const savedMovie = moviesState.savedMovies.find(
-      (item) => item.movieId === movie.id
+      (item) => item.movieId === movie.id,
     );
     if (savedMovie) {
       mainApi.deleteMovie(savedMovie._id).then(({ data }) => {
         const savedMovies = moviesState.savedMovies.filter(
-          (item) => item.movieId !== data.movieId
+          (item) => item.movieId !== data.movieId,
         );
         setMoviesState({ ...moviesState, savedMovies });
       });
     } else {
       const saveMovie = {
-        country: movie.country || "Unknown",
-        director: movie.director || "Unknown",
+        country: movie.country || 'Unknown',
+        director: movie.director || 'Unknown',
         duration: movie.duration,
         year: movie.year,
         description: movie.description,
         image: `${mainApiUrl}${movie.image.url}`,
         trailerLink: movie.trailerLink,
-        nameRU: movie.nameRU || "Unknown",
-        nameEN: movie.nameEN || "Unknown",
+        nameRU: movie.nameRU || 'Unknown',
+        nameEN: movie.nameEN || 'Unknown',
         thumbnail: `${mainApiUrl}${movie.image.formats.thumbnail.url}`,
         movieId: movie.id,
       };
@@ -52,12 +54,12 @@ function Movies() {
         });
       });
     }
-    localStorage.setItem("movies", JSON.stringify(moviesState));
+    localStorage.setItem('movies', JSON.stringify(moviesState));
   }
 
   function filterMovies() {
     const searchText = moviesState.moviesSearchText.toLowerCase();
-    if (searchText === "") {
+    if (searchText === '') {
       return;
     }
     const filteredMovies = moviesState.list.filter(
@@ -67,18 +69,18 @@ function Movies() {
           return nameFilm.includes(searchText) && duration <= 40;
         }
         return nameFilm.includes(searchText);
-      }
+      },
     );
     setMoviesState({
       ...moviesState,
       filteredMovies,
       notFoundMovies: filteredMovies.length === 0,
     });
-    localStorage.setItem("movies", JSON.stringify(moviesState));
+    localStorage.setItem('movies', JSON.stringify(moviesState));
   }
 
-  function handleSubmitSearch(evt) {
-    evt.preventDefault();
+  function handleSubmitSearch(e) {
+    e.preventDefault();
     setRequest(true);
     moviesApi
       .getMovies()
@@ -87,7 +89,12 @@ function Movies() {
         filterMovies();
       })
       .catch((err) => {
-        console.log(err);
+        setToolTipState({
+          ...toolTipState,
+          isOpen: true,
+          message: `Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз`,
+          success: false,
+        });
       })
       .finally(() => {
         setRequest(false);
@@ -103,7 +110,8 @@ function Movies() {
 
   useEffect(() => {
     filterMovies();
-  }, [moviesState.moviesCheckbox,
+  }, [
+    moviesState.moviesCheckbox,
     moviesState.list.length,
     moviesState.savedMovies.length,
   ]);
@@ -120,6 +128,7 @@ function Movies() {
         setRequest(false);
       });
   }, []);
+
 
   return (
     <main className="movies">

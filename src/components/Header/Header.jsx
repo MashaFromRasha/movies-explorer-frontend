@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import logoHeader from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation.jsx";
-import { CurrentUserContext } from "../../context/CurrentUserContext.js";
+import { CurrentUserContext } from '../../contexts/user-context';
 
 function Header() {
   const { userState } = useContext(CurrentUserContext);

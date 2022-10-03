@@ -78,7 +78,8 @@
   width: 100%;
   border-radius: 3px;
   height: 45px;
-  color: #8f4949;
+  color: #ffffff;
+  background-color: rgb(185, 185, 185);
   border: none;
   font-size: 14px;
   font-weight: 500;
