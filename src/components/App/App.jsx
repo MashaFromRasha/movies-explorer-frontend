@@ -22,8 +22,8 @@ import mainApi from "../../utils/MainApi.js";
 import {
   defaultValidationState,
   ValidationContext,
-} from "../../contexts/validation-context";
-import InfoToolTip from "../InfoTooltip/InfoTooltip";
+} from "../../contexts/validation-context.js";
+import InfoToolTip from "../InfoToolTip/InfoToolTip.jsx";
 
 function App() {
   const [moviesState, setMoviesState] = useState(defaultMovieState);
