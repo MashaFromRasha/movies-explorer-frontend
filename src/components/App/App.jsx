@@ -12,10 +12,10 @@ import {
   CurrentUserContext,
   InfoToolTipContext,
   MovieContext,
-} from "../../contexts/store";
-import { defaultMovieState } from "../../contexts/movie-context";
-import { defaultUserState } from "../../contexts/user-context";
-import { defaultInfoToolTipState } from "../../contexts/infotooltip-context";
+} from "../../contexts/store.js";
+import { defaultMovieState } from "../../contexts/movie-context.js";
+import { defaultUserState } from "../../contexts/user-context.js";
+import { defaultInfoToolTipState } from "../../contexts/infotooltip-context.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 import mainApi from "../../utils/MainApi.js";
