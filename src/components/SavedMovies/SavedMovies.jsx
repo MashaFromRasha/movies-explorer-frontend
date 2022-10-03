@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import mainApi from "../../utils/MainApi.js";
 import { CurrentUserContext } from '../../contexts/user-context.js';
-import { MovieContext } from '../../contexts/movie-context,js';
+import { MovieContext } from '../../contexts/movie-context.js';
 
 function SavedMovies() {
   const { moviesState, setMoviesState } = useContext(MovieContext);
